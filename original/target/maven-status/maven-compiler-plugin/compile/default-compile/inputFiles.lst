@@ -1,0 +1,11 @@
+/Users/pedrobrigatto/Personal/Workspaces/Devmedia/Microartigos/strategy-pattern/original/src/main/java/br/com/devmedia/pedrobrigatto/microartigos/strategy/commands/NodeConfigurationManager.java
+/Users/pedrobrigatto/Personal/Workspaces/Devmedia/Microartigos/strategy-pattern/original/src/main/java/br/com/devmedia/pedrobrigatto/microartigos/strategy/exceptions/ValidationException.java
+/Users/pedrobrigatto/Personal/Workspaces/Devmedia/Microartigos/strategy-pattern/original/src/main/java/br/com/devmedia/pedrobrigatto/microartigos/strategy/validators/BaseValidator.java
+/Users/pedrobrigatto/Personal/Workspaces/Devmedia/Microartigos/strategy-pattern/original/src/main/java/br/com/devmedia/pedrobrigatto/microartigos/strategy/validators/Validator.java
+/Users/pedrobrigatto/Personal/Workspaces/Devmedia/Microartigos/strategy-pattern/original/src/main/java/br/com/devmedia/pedrobrigatto/microartigos/strategy/exceptions/BaseException.java
+/Users/pedrobrigatto/Personal/Workspaces/Devmedia/Microartigos/strategy-pattern/original/src/main/java/br/com/devmedia/pedrobrigatto/microartigos/strategy/validators/IpAddressValidator.java
+/Users/pedrobrigatto/Personal/Workspaces/Devmedia/Microartigos/strategy-pattern/original/src/main/java/br/com/devmedia/pedrobrigatto/microartigos/strategy/exceptions/CommandException.java
+/Users/pedrobrigatto/Personal/Workspaces/Devmedia/Microartigos/strategy-pattern/original/src/main/java/br/com/devmedia/pedrobrigatto/microartigos/strategy/Main.java
+/Users/pedrobrigatto/Personal/Workspaces/Devmedia/Microartigos/strategy-pattern/original/src/main/java/br/com/devmedia/pedrobrigatto/microartigos/strategy/model/Property.java
+/Users/pedrobrigatto/Personal/Workspaces/Devmedia/Microartigos/strategy-pattern/original/src/main/java/br/com/devmedia/pedrobrigatto/microartigos/strategy/validators/BooleanValidator.java
+/Users/pedrobrigatto/Personal/Workspaces/Devmedia/Microartigos/strategy-pattern/original/src/main/java/br/com/devmedia/pedrobrigatto/microartigos/strategy/validators/MaxNodesValidator.java

@@ -1,0 +1,57 @@
+para executar os projetos Java: 
+
+mvn exec:java
+
+
+assuntos para abordar no artigo 
+
+complexidade de codigo e o eclipse metrics (http://metrics.sourceforge.net/update)
+
+Referências: 
+http://stackoverflow.com/questions/26384228/how-to-run-maven-for-a-java-main-method-call
+http://metrics.sourceforge.net/
+https://pt.wikipedia.org/wiki/Strategy
+
+O cerne da questão deste artigo está nos dois blocos abaixo:
+
+    private static void validateInput(Property property) throws ValidationException {
+
+        if (INPUT_HOST.equalsIgnoreCase(property.getName())) {
+            new IpAddressValidator().validate(property.getValue());
+        } else if (INPUT_LOGGING_ENABLED.equalsIgnoreCase(property.getName())) {
+            new BooleanValidator().validate(property.getValue());
+        } else if (INPUT_SERVERS_COUNT.equalsIgnoreCase(property.getName())){
+            new MaxNodesValidator().validate(property.getValue());
+        } else {
+            LOGGER.debug("esta propriedade ainda não é suportada pela ferramenta");
+            throw new ValidationException("esta propriedade ainda não é suportada pela ferramenta");
+        }
+    }
+    
+    private static void validateInput(Property property) throws CommandException, ValidationException {
+        try {
+            validatorMap.get(property.getName()).newInstance().validate(property.getValue());
+        } catch (InstantiationException | IllegalAccessException e) {
+            System.out.println("não foi possível identificar um "
+                    + "validator para a propriedade " + property.getName());
+        }
+    }
+    
+    E qual é a vantagem?
+    
+    Código mais enxuto. 10 linhas contra 6, isso falando em apenas 3 propriedades. Seria maior a diferença com mais propriedades,
+    uma vez que este método, no código refatorado, não cresce mais. Permanece em 6 linhas. 
+    
+    Manutenção é mais simples, basta mapear o tipo de validator (e esse mapeamento poderia ir até para fora do código)
+        - base path para os validadores
+        - mapeamento um a um do tipo nome_propriedade=alias_validador
+        - internamente, poderia haver algo como um enum que mapeia alias_validator para a class que o implementa. 
+        - com isso, o código só seria alterado novamente caso novos validadores tivessem que ser inseridos no sistema
+    Na implementação atual, ainda assim é mais simples, porque é só inserir uma linha em cada um dos maps. 
+    Do outro jeito (projeto 'original'), os if-else crescem muito conforme novas propriedades sao suportadas. 
+    Isso em algum momento, geraria uma complexidade ciclomática acima da estabelecida como razoável (vide imagem)
+    Isso não é boa prática, não é bom código. 
+    COm o nosso código, por mais que cresça o numero de propriedades suportadas, não mexemos mais no método
+    De certa forma, o que usamos tem a ver com o conceito do pattern strategy (comportamental)
+    Mas o conceito-chave é generalização-especialização, do paradigma OO. Nada mais.
+    
